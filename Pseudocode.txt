@@ -1,0 +1,95 @@
+1. Abstract Class Operasi Bilang Abs 
+Abstact Class OperasiBilanganAbs
+a,b,c		// access protected, type : float/double
+set_A(a)	// access protected, abstract method
+set_B(b)	// access protected, abstract method
+set_C()		// access protected, abstract method
+get_A()		// access protected, abstract method
+get_B()		// access protected, abstract method
+get_C()		// access protected, abstract method
+tampil()	// access protected, abstract method
+
+2. Penjumlahan
+Class OperasiPenjumlahan extends OperasiBilanganAbs //will implements all parent method
+a,b,c			// access protected, type : float/double
+set_A(a): this->a = a	// access protected, change value of a
+set_B(b): this->b = b	// access protected, change value of b
+set_C()		// access protected, change value of c form a+b
+: try{this->c = this->get_A() + this->get_B()}catch (exception $e){echo "Error";}
+get_A(): return a	// access protected, return value of a
+get_B(): return b	// access protected, return value of b
+get_C(): return c 	// access protected, return value of c
+tampil() 		// access protected, return result to string
+: return Hasil Operasi perkalian get_A() + get_B() = get_C()
+hasil()			//access public, return result of tampil()
+: return this->tampil()
+
+3. Pengurangan
+Class OperasiPengurangan extends OperasiBilanganAbs //will implements all parent method
+a,b,c			// access protected, type : float/double
+set_A(a): this->a = a	// access protected, change value of a
+set_B(b): this->b = b	// access protected, change value of b
+set_C()		// access protected, change value of c form a-b
+: try{this->c = this->get_A() - this->get_B()}catch (exception $e){echo "Error";}
+get_A(): return a	// access protected, return value of a
+get_B(): return b	// access protected, return value of b
+get_C(): return c 	// access protected, return value of c
+tampil() 		// access protected, return result to string
+: return Hasil Operasi perkalian get_A() - get_B() = get_C()
+hasil()			//access public, return result of tampil()
+: return this->tampil()
+
+4. Perkalian
+Class OperasiPerkalian extends OperasiBilanganAbs //will implements all parent method
+a,b,c			// access protected, type : float/double
+set_A(a): this->a = a	// access protected, change value of a
+set_B(b): this->b = b	// access protected, change value of b
+set_C()		// access protected, change value of c form a-b
+: try{this->c = this->get_A() * this->get_B()}catch (exception $e){echo "Error";}
+get_A(): return a	// access protected, return value of a
+get_B(): return b	// access protected, return value of b
+get_C(): return c 	// access protected, return value of c
+tampil() 		// access protected, return result to string
+: return Hasil Operasi perkalian get_A() x get_B() = get_C()
+hasil()			//access public, return result of tampil()
+: return this->tampil()
+
+5. Pembagian
+Class OperasiPembagian extends OperasiBilanganAbs //will implements all parent method
+a,b,c			// access protected, type : float/double
+set_A(a): this->a = a	// access protected, change value of a
+set_B(b): this->b = b	// access protected, change value of b
+set_C()			// access protected, change value of c form a-b
+: try{this->c = this->get_A() / this->get_B()}catch (exception $e){echo "Error";}
+get_A(): return a	// access protected, return value of a
+get_B(): return b	// access protected, return value of b
+get_C(): return c 	// access protected, return value of c
+tampil() 		// access protected, return result to string
+: return Hasil Operasi perkalian get_A() : get_B() = get_C()
+hasil()			//access public, return result of tampil()
+: return this->tampil()
+
+6.Main (Final class OperasiBilanganAbsCetak.php)
+
+include('OperasiBilanganAbs.php')	//import file OperasiBilanganAbs.php
+include('OperasiPenjumlahan.php')	//import file OperasiPenjumlahan.php
+include('OperasiPengurangan.php')	//import file OperasiPengurangan.php
+include('OperasiPerkalian.php')		//import file OperasiPerkalian.php
+include('OperasiPembagian.php')		//import file OperasiPembagian.php
+
+Final class OperasiBilanganAbsCetak
+cetakSemua(array OB,float a ,float b) 	// access private, print value from all operation to string.
+: return Hasil Operasi bilangan a dan b adalah : OB[0]->hasil(), OB[1]->hasil(), OB[2]->hasil(), OB[3]->hasil()
+jawaban(array OB,float a ,float b) 	//access public, return cetakSemua
+: return this-> cetakSemua(OB,a,b)
+
+angka1 <- 10.5					//insert angka1 value
+angka2 <- 0					// insert angka2 value
+hasil <- new OperasiBilanganAbsCetak() 		//Make OperasiBilanganAbsCetak object named hasil
+OB <- array(new OperasiPenjumlahan($angka1,$angka2), 
+new OperasiPengurangan($angka1,$angka2),
+new OperasiPerkalian($angka1,$angka2),
+new OperasiPembagian($angka1,$angka2)) 		// insert array of object called OB
+
+echo $hasil->jawaban($OB,$angka1,$angka2)	//print value to browser
+
